@@ -14,7 +14,7 @@ export default {
 <template>
     <div class="container">
         <div class="row">
-            <div class=" col-3 mt-5" v-for=" project in store.projects">
+            <div class=" col-3 mt-5" v-for=" project in store.projects" :key="project.id">
                 <ProjectCard class="h-100" :project="project" />
             </div>
         </div>

@@ -12,8 +12,8 @@ export default {
 <template>
     <nav>
         <ul class="pagination">
-            <li class="page-item" :class="{ 'disabled': !link.url, 'active': link.active }"
-                v-for="link in   store.links     ">
+            <li class="page-item" :class="{ 'disabled': !link.url, 'active': link.active }" v-for="link in store.links"
+                :key="link.label">
                 <button class="page-link" :disabled="!link.url" v-html="link.label"
                     @click="$emit('change-page', link.url)"></button>
             </li>
