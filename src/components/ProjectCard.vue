@@ -4,12 +4,16 @@ export default {
 }
 </script>
 <template>
-    <div class="card mt-5">
-        <img v-if="project.image" :src="project.image" :alt="project.title">
+    <div class="card mt-5 p-3">
+        <img v-if="project.image" :src="project.image" :alt="project.title" class="img-fluid">
         <div class="card-body">
-            <h1>{{ project.title }}</h1>
+            <h4>{{ project.title }}<span class="badge rounded-pill bg-primary fs-6 ms-1"
+                    v-for="technology in project.technologies">
+                    {{ technology.label }}
+                </span></h4>
             <p class="card-text">{{ project.description }}</p>
             <a :href="project.url" class="btn btn-primary">Vai su GitHub</a>
+            <div class=" mt-3">Tipo: {{ project.type.label }}</div>
         </div>
     </div>
 </template>

@@ -13,7 +13,7 @@ export default {
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <ProjectCard v-for="project in store.projects" :project="project" />
             </div>
         </div>
