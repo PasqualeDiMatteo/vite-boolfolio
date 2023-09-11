@@ -1,20 +1,22 @@
 <script >
 import axios from "axios";
 import AppHeader from './components/AppHeader.vue';
+import ProjectList from './components/ProjectList.vue';
+
+import { store } from "./assets/data/store"
 const endpoint = "http://127.0.0.1:8000/api/projects";
 export default {
-  components: { AppHeader },
+  components: { AppHeader, ProjectList },
   data() {
     return {
-      projects: [],
-      links: [],
+      store,
     }
   },
   methods: {
     fetchProject() {
       axios.get(endpoint).then(res => {
-        this.projects = res.data.data;
-        this.links = res.data.links;
+        store["projects"] = res.data.data;
+        store["links"] = res.data.links;
       })
     }
   },
@@ -25,11 +27,12 @@ export default {
 </script>
 
 <template>
+  <!-- Header -->
   <AppHeader />
+
+  <!-- Main -->
   <main>
-    <ul>
-      <li v-for="project in projects">{{ project.title }}</li>
-    </ul>
+    <ProjectList />
   </main>
 </template>
 
