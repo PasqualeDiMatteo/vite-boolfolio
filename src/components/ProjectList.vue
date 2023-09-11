@@ -13,8 +13,8 @@ export default {
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-3">
-                <ProjectCard v-for="project in store.projects" :project="project" />
+            <div class="col-3" v-for="project in store.projects">
+                <ProjectCard :project="project" />
             </div>
         </div>
     </div>
