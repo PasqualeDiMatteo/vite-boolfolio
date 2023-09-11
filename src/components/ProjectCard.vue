@@ -1,13 +1,18 @@
 <script>
 export default {
-    props: { project: Object }
+    props: { project: Object },
+    methods: {
+        getBgcolor(color) {
+            return "bg-" + color;
+        }
+    }
 }
 </script>
 <template>
     <div class="card">
         <img v-if="project.image" :src="project.image" :alt="project.title" class="img-fluid">
         <div class="card-body ">
-            <h4>{{ project.title }}<span class="badge rounded-pill bg-primary fs-6 ms-1"
+            <h4>{{ project.title }}<span :class="getBgcolor(technology.color)" class="badge rounded-pill ms-1"
                     v-for="technology in project.technologies" :key="technology.id">
                     {{ technology.label }}
                 </span></h4>
@@ -17,4 +22,8 @@ export default {
         </div>
     </div>
 </template>
-<style></style>
+<style scoped>
+.badge {
+    font-size: 0.9rem;
+}
+</style>
