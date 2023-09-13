@@ -26,7 +26,7 @@ export default {
             if (this.hasErrors) return;
             axios.post(endpoint, this.form)
                 .then(() => {
-                    this.form = { ...emptyForm };
+                    this.form = { emptyForm };
                     this.successMessage = "Messaggio inviato con successo!";
                 })
                 .catch((err) => {
@@ -72,7 +72,7 @@ export default {
         <h2 class="my-4">Contattaci</h2>
 
         <!-- Alert -->
-        <div v-if="showAlert" class="alert alert-danger" :class="`alert-${alertType}`" role="alert">
+        <div v-if="showAlert" class="alert" :class="`alert-${alertType}`" role="alert">
             <div v-if="successMessage">{{ successMessage }}</div>
             <ul v-if="hasErrors">
                 <li v-for="(error, key) in errors" :key="key">{{ error }}</li>
